@@ -1,1 +1,14 @@
-<span>{{test}}</span>
+
+<div class="row panel panel-default" ng-repeat="clsimage in clsimages">
+
+    <div class="col-md-8">
+      <img width="400" height="300" src="{{clsimage.path}}">
+    </div>
+    <div class="col-md-3">
+      <ul>
+        <li ng-repeat="(key, value) in clsimage.classifications">
+          {{key}} : {{value}}
+        </li>
+      </ul>
+    </div>
+</div>

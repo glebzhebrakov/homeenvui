@@ -19,6 +19,6 @@ angular.module('homeenvApp')
       console.log(response.data);
       $scope.clsimages = response.data;
     }, function errorCallback(response) {
-
+      console.log(response);
     });
   }]);

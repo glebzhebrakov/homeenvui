@@ -1,4 +1,6 @@
-<div infinite-scroll='loadMore()' infinite-scroll-distance="2" >
-  <img ng-repeat='clsimage in imagesview' width="400" height="300" src="{{clsimage.path}}">
-</div>
+<masonry column-width="200"  infinite-scroll='loadMore()' infinite-scroll-distance="2">
+  <div class="masonry-brick" ng-repeat="clsimage in imagesview">
+    <img ng-src="{{ clsimage.path }}" alt="A masonry brick">
+  </div>
+<masonry/>
 

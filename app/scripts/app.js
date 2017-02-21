@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'infinite-scroll'
+    'infinite-scroll',
+    'wu.masonry'
   ])
   .config(function ($routeProvider) {
     $routeProvider

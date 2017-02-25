@@ -1,3 +1,9 @@
+<div class="panel">
+  <select ng-change="searchByClass()" ng-model="selectedCls">
+    <option selected="Select class"></option>
+    <option ng-repeat="cls in classes" >{{cls}}</option>
+  </select>
+</div>
 <div masonry="true" column-width="200"  infinite-scroll='loadMore()' infinite-scroll-distance="2">
   <div class="masonry-brick img_container" ng-repeat="clsimage in imagesview">
     <div class="img_container">

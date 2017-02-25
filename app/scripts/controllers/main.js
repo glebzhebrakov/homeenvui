@@ -37,33 +37,40 @@ angular.module('homeenvApp')
       console.log(response);
     });
 
+
     $scope.loadMore = function() {
 
-      if (!!$scope.selectedCls){
-
-        var pagenum =  ((Math.round($scope.imagesview.length/20)));
-        if (lastload != pagenum || pagenum==0){
-          lastload = pagenum;
-          $http({
-            method: 'GET',
-            url: '/rest/api/classifications/'+$scope.selectedCls+'/'+pagenum+'/20'
-          }).then(function successCallback(response) {
-            $scope.imagesview =  $scope.imagesview.concat(response.data);
-
-          }, function errorCallback(response) {
-            console.log(response);
-          });
-        }
-      }
+      // if (!!$scope.selectedCls){
+      //
+      //   var pagenum =  ((Math.round($scope.imagesview.length/20)));
+      //   if (lastload != pagenum || pagenum==0){
+      //     lastload = pagenum;
+      //     $http({
+      //       method: 'GET',
+      //       url: '/rest/api/classifications/'+$scope.selectedCls+'/'+pagenum+'/20'
+      //     }).then(function successCallback(response) {
+      //       $scope.imagesview =  $scope.imagesview.concat(response.data);
+      //
+      //     }, function errorCallback(response) {
+      //       console.log(response);
+      //     });
+      //   }
+      // }
 
 
     };
 
     $scope.searchByClass = function () {
       if (!!$scope.selectedCls){
-        lastload=0;
-        $scope.imagesview = [];
-        $scope.loadMore();
+        $http({
+          method: 'GET',
+          url: '/rest/api/classifications/all/'+$scope.selectedCls
+        }).then(function successCallback(response) {
+          $scope.imagesview =  response.data;
+
+        }, function errorCallback(response) {
+          console.log(response);
+        });
       }
     }
   }]);

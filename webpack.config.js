@@ -21,7 +21,8 @@ module.exports = {
       }),
       new CopyWebpackPlugin(
           [ {from: 'index.html'},
-            {from: 'src/views', to: 'views'}
+            {from: 'src/views', to: 'views'},
+            {from: 'node_modules/bootstrap/dist/css/bootstrap.min.css'}
           ]
       ),
       new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' })

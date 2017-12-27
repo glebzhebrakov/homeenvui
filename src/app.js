@@ -1,12 +1,27 @@
 import _ from 'lodash';
+import 'jquery';
+import 'bootstrap';
 
-function component() {
-  var element = document.createElement('div');
+var angular = require('angular');
+var angularRoute = require('angular-route');
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-  return element;
-}
+angular
+    .module('homeenvApp', [
+        'ngRoute'
+    ])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/dashboard.html',
+                controller: 'DashboardCtrl',
+                controllerAs: 'dashboard'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
 
-document.body.appendChild(component());
+require('./controllers/dashboard.controller');
+
+

@@ -1,9 +1,32 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+var webpack = require("webpack");
 
 module.exports = {
-  entry: './src/app.js',
+  entry: {
+      app: './src/app.js',
+      vendor: ['angular', 'angular-route','bootstrap', 'lodash']
+  },
+
   output: {
-    filename: 'bundle.js',
+    filename: 'app.bundle.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  plugins: [
+      new webpack.ProvidePlugin({
+          $: 'jquery',
+          jQuery: 'jquery',
+          'window.jQuery': 'jquery',
+          Popper: ['popper.js', 'default']
+      }),
+      new CopyWebpackPlugin(
+          [ {from: 'index.html'},
+            {from: 'src/views', to: 'views'}
+          ]
+      ),
+      new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' })
+  ]
 };
+
+
+
